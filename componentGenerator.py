@@ -36,7 +36,7 @@ def generate_file(all_ts):
             print("successfully created import for " + class_name)
 
             custom_components.append(textwrap.dedent(f"""
-                const {class_name} = createComponent({{
+                const md{class_name} = createComponent({{
                     react: React,
                     tagName: "md-{component}"
                     elementClass: MD{class_name}WebComponent
@@ -44,7 +44,8 @@ def generate_file(all_ts):
             """))
             print("successfully created created custom component for " + class_name)
 
-
+            exports.append(class_name)
+            print("successfully added %s to exports" % class_name)
         else:
             pass
 
@@ -64,5 +65,14 @@ exports = []
 
 generate_file(all_ts)
 
-material_ts = default_imports + "\n" + "\n".join(material_imports) + "\n" + "\n".join(custom_components)
-print("\n" + material_ts)
+material_exports = "export {" + "\n    " + ",\n    ".join(exports) + ",\n}"
+material_ts = default_imports + "\n" + "\n".join(material_imports) + "\n" + "\n".join(custom_components) + "\n" + material_exports
+
+output = "material.ts"
+with open(output, "w") as output_file:
+    output_file.write(material_ts)
+
+print("\nscript successful - created a file called material.ts")
+print("put this in the root folder of your react project,")
+print("then you can use the material-web components (for example: <mdElevatedButton>Hello World</mdElevatedButton>)")
+print("IMPORTANT: make sure to install material web components by running 'npm install @material/web' or 'yarn add @material/web'")
