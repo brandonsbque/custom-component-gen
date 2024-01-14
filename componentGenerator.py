@@ -19,11 +19,12 @@ def generate_file(all_ts):
             parts = line.split("/")
 
             category = parts[1].strip().capitalize()
-            component = parts[2].strip()[:-5].lstrip("md-")
+            original_component = parts[2].strip()[:-5]
+            component = parts[2].strip()[:-5].removeprefix("md-")
             # [:-5] to remove " .js'; " at the end of each line
             # for some reason, import for FocusRing in all.ts is: import './focus/md-focus-ring.js';
-            # this breaks the pattern, so taking it into account incase it happens in the future. hence,
-            # lstrip("md-") is to remove the prefix "md-" in the variable, "component".
+            # this breaks the pattern, so we are taking into account this possibility. hence,
+            # we use removeprefix() to remove the "md-" incase it happens again in the future.
             
             component_split = component.split("-")
             class_name = ""
@@ -31,7 +32,7 @@ def generate_file(all_ts):
                 class_name = class_name + word.capitalize()
 
             material_imports.append(
-                f"import {{ MD{class_name} as MD{class_name}WebComponent }} from \"@material/web/{category.lower()}/{component}\";"
+                f"import {{ MD{class_name} as MD{class_name}WebComponent }} from \"@material/web/{category.lower()}/{original_component}\";"
             )
             print("successfully created import for " + class_name)
 
