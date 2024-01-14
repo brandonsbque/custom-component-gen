@@ -32,20 +32,20 @@ def generate_file(all_ts):
                 class_name = class_name + word.capitalize()
 
             material_imports.append(
-                f"import {{ MD{class_name} as MD{class_name}WebComponent }} from \"@material/web/{category.lower()}/{original_component}\";"
+                f"import {{ Md{class_name} as Md{class_name}WebComponent }} from \"@material/web/{category.lower()}/{original_component}\";"
             )
             print("successfully created import for " + class_name)
 
             custom_components.append(textwrap.dedent(f"""
-                const md{class_name} = createComponent({{
+                const Md{class_name} = createComponent({{
                     react: React,
-                    tagName: "md-{component}"
-                    elementClass: MD{class_name}WebComponent
+                    tagName: "md-{component}",
+                    elementClass: Md{class_name}WebComponent
                 }});
             """))
             print("successfully created created custom component for " + class_name)
 
-            exports.append(class_name)
+            exports.append(f"Md{class_name}")
             print("successfully added %s to exports" % class_name)
         else:
             pass
