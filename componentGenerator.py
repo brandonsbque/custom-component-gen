@@ -1,4 +1,5 @@
 import re
+import textwrap
 
 def generate_file(all_ts):
     # Extract lines between start and end comments (returns all the imports which contain the categories and custom_components)
@@ -30,9 +31,20 @@ def generate_file(all_ts):
                 class_name = class_name + word.capitalize()
 
             material_imports.append(
-                f"import {{ MD{class_name} }} from \"@material/web/{category.lower()}/{component}\";"
+                f"import {{ MD{class_name} as MD{class_name}WebComponent }} from \"@material/web/{category.lower()}/{component}\";"
             )
             print("successfully created import for " + class_name)
+
+            custom_components.append(textwrap.dedent(f"""
+                const {class_name} = createComponent({{
+                    react: React,
+                    tagName: "md-{component}"
+                    elementClass: MD{class_name}WebComponent
+                }});
+            """))
+            print("successfully created created custom component for " + class_name)
+
+
         else:
             pass
 
@@ -44,7 +56,6 @@ with open(all_ts, "r") as file:
 
 default_imports = """import React from "react";
 import { createComponent } from "@lit/react";
-
 """
 
 material_imports = []
@@ -53,6 +64,5 @@ exports = []
 
 generate_file(all_ts)
 
-material_ts = default_imports
+material_ts = default_imports + "\n" + "\n".join(material_imports) + "\n" + "\n".join(custom_components)
 print("\n" + material_ts)
-
