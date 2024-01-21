@@ -5,11 +5,12 @@
 ---
 
 **Disclaimer**
-This script was made for the purpose of helping other developers use the @materia/web library for their React projects. I am not one of the developers for the @material/web library, but I simply came across the issue of the library not working natively in React and I decided to write a script based on a workaround from one of their develoeprs. This workaround can be found in the @material/web Github Repo's discussions, found [here](https://github.com/material-components/material-web/discussions/5186). This script will basically do the workaround for each component that's available in the library, generate a file that anyone can paste in their React project, and make it usable right away.
+
+This script was made for the purpose of helping other developers use the @materia/web library for their React projects. I am not one of the developers for the @material/web library, but I simply came across the issue of the library not working natively in React and I decided to write a script based on a workaround from one of their developers. This workaround can be found in the @material/web Github Repo's discussions, found [here](https://github.com/material-components/material-web/discussions/5186). This script will basically do the workaround for each component that's available in the library, generate a file that anyone can paste in their React project, and make it usable right away.
 
 > I would love a star ⭐️ though for this repository if you found this helpful 🤩
 
-Also, this script does not connect to the internet, whatsoever. I'm sure people would appreciate this sense of privacy, and therefore you would have to download the necessary file for the script to use as reference manually from the @material/web 's Repo: [here](https://github.com/material-components/material-web)
+Also, this script does not connect to the internet, whatsoever. I'm sure people would appreciate this sense of privacy, and therefore you would have to download the necessary file for the script to use as reference manually from the @material/web's Repo: [here](https://github.com/material-components/material-web)
 
 ---
 
@@ -21,13 +22,15 @@ Also, this script does not connect to the internet, whatsoever. I'm sure people 
 
 **Description**
 
-The @material/web library is the new official web components library from Google. It currently does not provide the native support to be used in a React project. Therefore, based on the discussion in their official GitHub Repo: [here](https://github.com/material-components/material-web/discussions/5186) , they were able to make the @material/web component work in React.
+The [@material/web library](https://m3.material.io/) is the new official web components library from Google. It currently does not provide the native support to be used in a React project. Therefore, based on the discussion in their official GitHub Repo: [here](https://github.com/material-components/material-web/discussions/5186) , they were able to make the @material/web component work in React.
 
 However, typing every single component out to make it work like that would take A LOT of work. So, I wrote this script to help other people who wanted to use the @material/web components in a React project, and fast track them to having all the available components right away.
 
 NOTE: you have to run the python script everytime they add a new component to their library. Not all components are finished as of my time of writing this, (January 2024), so if they add a new component to their library... just follow the instructions below again. It should not take more than 30 seconds after you've done it once.
 
 > Please give this repository a star 🌟 if you found it useful! Thanks guys!
+
+Feel free to let me know if there's any issue with the script in this repo's _issues_. Thanks!
 
 ---
 
@@ -59,6 +62,7 @@ or if you're using yarn:
 **Example on using the new React components from @material/web**
 
 Lets say you want to use the _filled-tonal-button_ they tell you to do:
+
 `import '@material/web/button/filled-tonal-button.js';`
 
 and then:
