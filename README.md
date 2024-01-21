@@ -1,6 +1,15 @@
-# custom-component-gen
+# custom-component-gen for the @material/web library
 
 ### A script that will generate a file that enables the use of Material Web Components in React (works with Typescript) 🚀
+
+---
+
+**Disclaimer**
+This script was made for the purpose of helping other developers use the @materia/web library for their React projects. I am not one of the developers for the @material/web library, but I simply came across the issue of the library not working natively in React and I decided to write a script based on a workaround from one of their develoeprs. This workaround can be found in the @material/web Github Repo's discussions, found [here](https://github.com/material-components/material-web/discussions/5186). This script will basically do the workaround for each component that's available in the library, generate a file that anyone can paste in their React project, and make it usable right away.
+
+> I would love a star ⭐️ though for this repository if you found this helpful 🤩
+
+Also, this script does not connect to the internet, whatsoever. I'm sure people would appreciate this sense of privacy, and therefore you would have to download the necessary file for the script to use as reference manually from the @material/web 's Repo: [here](https://github.com/material-components/material-web)
 
 ---
 
